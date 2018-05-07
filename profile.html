@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="../jquery/jquery.1.10.2.min.js"></script>
+    <script src="../jquery/jquery.form.js"></script>
+    <script src="../angularjs/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/layout.css">
+    <!-- <link rel="stylesheet" href="../css/profile.css"> -->
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body ng-controller="profileC" class="layout">
+    <div class="ome">
+        <nav class="nav">
+            <a class="nav-link active" href="#">
+                    <img src="../img/logo1.png" style="height: 40px;">
+                </a>
+            <a class="nav-link" href="main.html">首页</a>
+            <a class="nav-link" href="addInfo.html">我要发布</a>
+            <a class="nav-link"  ng-href="main.html?phoneNumber={{phoneNumber}}">我的发布</a>
+            <a class="nav-link" href="profile.html" style="border-right: solid 0px #2b669a;">个人信息</a>
+            <a class="nav-link" href="#" ng-click="loginout()">退出</a>
+        </nav>
+    </div>
+    <hr>
+<!--     <input ng-model="username" type="text" placeholder="请输入用户名" class="inputText">
+    <h1>hello,{{username}}</h1> -->
+    <div class="cf">
+    <img src="{{data.headImg}}" alt="头像" style="width: 100px;height: 130px;">
+    <form action="http://115.159.196.122:5000/upload" enctype="multipart/form-data" method="post" id="form">
+        <input name="phoneNumber" value="{{phoneNumber}}" type="hidden">
+        <input type="file" name="file" id="profileImg">
+        <input type="submit" value="上传">
+    </form>
+    <hr>
+    <h1>hello,{{data.username}}</h1>
+    <h2>{{data.motto}}</h2>
+    <h4>{{data.email}}</h4>
+    <h4>{{data.phoneNumber}}</h4>
+    <div class="bianJ">
+        <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">编辑</button>
+    </div>      
+    </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">个人信息修改</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">用户名：</label>
+            <input type="text" class="form-control" id="recipient-name" ng-model="data.username">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">座右铭：</label>
+            <textarea class="form-control" id="message-text" ng-model="data.motto"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">邮箱：</label>
+            <input type="text" class="form-control" id="recipient-name" ng-model="data.email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" ng-click="editInfo()">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="../js/profile.js"></script>
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
